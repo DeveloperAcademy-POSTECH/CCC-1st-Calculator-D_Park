@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-enum CalcBtn:String {
+enum CalcButtonContent:String {
     case one = "1"
     case two = "2"
     case three = "3"
@@ -28,7 +28,7 @@ enum CalcBtn:String {
     case percent = "%"
     case negative = "+/-"
     
-    var btnColor: Color {
+    var buttonColor: Color {
         switch self {
         case .add, .substract, .multiply, .divide, .equal:
             return .orange
@@ -44,7 +44,7 @@ struct ContentView: View {
     
     @State var value = "0"
     
-    let buttons: [[CalcBtn]] = [
+    let buttonContentRows: [[CalcButtonContent]] = [
         [.clear,.negative,.percent, .divide],
         [.seven,.eight,.nine, .multiply],
         [.four,.five,.six, .substract],
@@ -69,7 +69,7 @@ struct ContentView: View {
                 .padding()
                 
                 //Buttons
-                ForEach(buttons, id: \.self){ row in
+                ForEach(buttonContentRows, id: \.self){ row in
                     HStack(spacing: 12){
                         ForEach(row, id: \.self){ item in
                             Button(action: {
@@ -77,10 +77,10 @@ struct ContentView: View {
                             }, label: {
                                 Text(item.rawValue)
                                     .font(.system(size: 32))
-                                    .frame(width: self.btnWidth(item: item), height:self.btnHeight())
-                                    .background(item.btnColor)
+                                    .frame(width: self.buttonWidth(item: item), height:self.buttonHeight())
+                                    .background(item.buttonColor)
                                     .foregroundColor(.white)
-                                    .cornerRadius(self.btnWidth(item: item)/2)
+                                    .cornerRadius(self.buttonWidth(item: item)/2)
                             })
                         }
                     }
@@ -90,19 +90,19 @@ struct ContentView: View {
         }
     }
     
-    func onTap(button: CalcBtn){
+    func onTap(button: CalcButtonContent){
        
     }
     
-    func btnWidth(item: CalcBtn) -> CGFloat {
+    func buttonWidth(item: CalcButtonContent) -> CGFloat {
         if item == .zero {
-            return ((UIScreen.main.bounds.width - (4*12)) / 4)*2
+            return ((UIScreen.main.bounds.width - (4 * 12)) / 4) * 2
         }
-        return (UIScreen.main.bounds.width - (5*12)) / 4
+        return (UIScreen.main.bounds.width - (5 * 12)) / 4
     }
     
-    func btnHeight()->CGFloat{
-        return (UIScreen.main.bounds.width - (5*12)) / 4
+    func buttonHeight()->CGFloat{
+        return (UIScreen.main.bounds.width - (5 * 12)) / 4
     }
 }
 
