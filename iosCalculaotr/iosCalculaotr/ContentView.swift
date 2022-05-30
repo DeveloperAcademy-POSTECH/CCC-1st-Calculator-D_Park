@@ -76,7 +76,7 @@ struct ContentView: View {
                 
                 //Buttons
                 ForEach(buttonContentRows, id: \.self){ row in
-                    HStack(spacing: 12){
+                    HStack(spacing: Constants.buttonSpacing){
                         ForEach(row, id: \.self){ item in
                             Button(action: {
                                 self.onTap(button: item)
