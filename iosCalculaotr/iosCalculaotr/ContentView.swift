@@ -40,9 +40,15 @@ enum CalcBtn:String {
     }
 }
 
+enum Operation {
+    case add, substract, multiply, divide, none
+}
+
 struct ContentView: View {
     
     @State var value = "0"
+    @State var runningNum = 0
+    @State var currentOperation: Operation = .none
     
     let buttons: [[CalcBtn]] = [
         [.clear,.negative,.percent, .divide],
@@ -91,7 +97,53 @@ struct ContentView: View {
     }
     
     func onTap(button: CalcBtn){
-       
+        switch button {
+        case .add, .substract, .multiply, .divide, .equal:
+            if button == .add {
+                self.currentOperation = .add
+                self.runningNum = Int(self.value) ?? 0
+            }
+            else if button == .substract {
+                self.currentOperation = .substract
+                self.runningNum = Int(self.value) ?? 0
+            }
+            else if button == .multiply {
+                self.currentOperation = .multiply
+                self.runningNum = Int(self.value) ?? 0
+            }
+            else if button == .divide {
+                self.currentOperation = .divide
+                self.runningNum = Int(self.value) ?? 0
+            }
+            else if button == .equal {
+                let runningValue = self.runningNum
+                let currentValue = Int(self.value) ?? 0
+                switch self.currentOperation {
+                case .add: self.value = "\(runningValue + currentValue)"
+                case .substract: self.value = "\(runningValue - currentValue)"
+                case .multiply: self.value = "\(runningValue * currentValue)"
+                case .divide: self.value = "\(runningValue / currentValue)"
+                case .none:
+                    break
+                }
+            }
+            
+            if button != .equal {
+                self.value = "0"
+            }
+        case .clear:
+            self.value = "0"
+        case .decimal, .negative, .percent:
+            break
+        default:
+            let number = button.rawValue
+            if self.value == "0" {
+                value = number
+            }
+            else {
+                self.value = "\(self.value)\(number)"
+            }
+        }
     }
     
     func btnWidth(item: CalcBtn) -> CGFloat {
