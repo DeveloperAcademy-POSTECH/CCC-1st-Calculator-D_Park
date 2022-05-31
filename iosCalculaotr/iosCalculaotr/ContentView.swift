@@ -97,39 +97,81 @@ struct ContentView: View {
     }
     
     func onTap(button: CalcButtonContent){
+        //        switch button {
+        //        case .add, .substract, .multiply, .divide, .equal:
+        //            if button == .add {
+        //                self.currentOperation = .add
+        //                self.runningNum = Int(self.value) ?? 0
+        //            }
+        //            else if button == .substract {
+        //                self.currentOperation = .substract
+        //                self.runningNum = Int(self.value) ?? 0
+        //            }
+        //            else if button == .multiply {
+        //                self.currentOperation = .multiply
+        //                self.runningNum = Int(self.value) ?? 0
+        //            }
+        //            else if button == .divide {
+        //                self.currentOperation = .divide
+        //                self.runningNum = Int(self.value) ?? 0
+        //            }
+        //            else if button == .equal {
+        //                let runningValue = self.runningNum
+        //                let currentValue = Int(self.value) ?? 0
+        //                switch self.currentOperation {
+        //                case .add: self.value = "\(runningValue + currentValue)"
+        //                case .substract: self.value = "\(runningValue - currentValue)"
+        //                case .multiply: self.value = "\(runningValue * currentValue)"
+        //                case .divide: self.value = "\(runningValue / currentValue)"
+        //                case .none:
+        //                    break
+        //                }
+        //            }
+        //
+        //            if button != .equal {
+        //                self.value = "0"
+        //            }
+        //        case .clear:
+        //            self.value = "0"
+        //        case .decimal, .negative, .percent:
+        //            break
+        //        default:
+        //            let number = button.rawValue
+        //            if self.value == "0" {
+        //                value = number
+        //            }
+        //            else {
+        //                self.value = "\(self.value)\(number)"
+        //            }
+        //        }
+        
         switch button {
-        case .add, .substract, .multiply, .divide, .equal:
-            if button == .add {
-                self.currentOperation = .add
-                self.runningNum = Int(self.value) ?? 0
-            }
-            else if button == .substract {
-                self.currentOperation = .substract
-                self.runningNum = Int(self.value) ?? 0
-            }
-            else if button == .multiply {
-                self.currentOperation = .multiply
-                self.runningNum = Int(self.value) ?? 0
-            }
-            else if button == .divide {
-                self.currentOperation = .divide
-                self.runningNum = Int(self.value) ?? 0
-            }
-            else if button == .equal {
-                let runningValue = self.runningNum
-                let currentValue = Int(self.value) ?? 0
-                switch self.currentOperation {
-                case .add: self.value = "\(runningValue + currentValue)"
-                case .substract: self.value = "\(runningValue - currentValue)"
-                case .multiply: self.value = "\(runningValue * currentValue)"
-                case .divide: self.value = "\(runningValue / currentValue)"
-                case .none:
-                    break
-                }
-            }
-            
-            if button != .equal {
-                self.value = "0"
+        case .add:
+            self.currentOperation = .add
+            self.runningNum = Int(self.value) ?? 0
+            self.value = "0"
+        case .substract:
+            self.currentOperation = .substract
+            self.runningNum = Int(self.value) ?? 0
+            self.value = "0"
+        case .multiply:
+            self.currentOperation = .multiply
+            self.runningNum = Int(self.value) ?? 0
+            self.value = "0"
+        case .divide:
+            self.currentOperation = .divide
+            self.runningNum = Int(self.value) ?? 0
+            self.value = "0"
+        case .equal:
+            let runningValue = self.runningNum
+            let currentValue = Int(self.value) ?? 0
+            switch self.currentOperation {
+            case .add: self.value = "\(runningValue + currentValue)"
+            case .substract: self.value = "\(runningValue - currentValue)"
+            case .multiply: self.value = "\(runningValue * currentValue)"
+            case .divide: self.value = "\(runningValue / currentValue)"
+            case .none:
+                break
             }
         case .clear:
             self.value = "0"
