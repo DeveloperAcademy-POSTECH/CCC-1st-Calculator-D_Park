@@ -12,9 +12,6 @@
 		75A003512842FE2D00DCBC5B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A003502842FE2D00DCBC5B /* ContentView.swift */; };
 		75A003532842FE2E00DCBC5B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75A003522842FE2E00DCBC5B /* Assets.xcassets */; };
 		75A003562842FE2E00DCBC5B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75A003552842FE2E00DCBC5B /* Preview Assets.xcassets */; };
-		75A003602842FE2E00DCBC5B /* iosCalculaotrTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A0035F2842FE2E00DCBC5B /* iosCalculaotrTests.swift */; };
-		75A0036A2842FE2E00DCBC5B /* iosCalculaotrUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A003692842FE2E00DCBC5B /* iosCalculaotrUITests.swift */; };
-		75A0036C2842FE2E00DCBC5B /* iosCalculaotrUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A0036B2842FE2E00DCBC5B /* iosCalculaotrUITestsLaunchTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,10 +39,7 @@
 		75A003522842FE2E00DCBC5B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		75A003552842FE2E00DCBC5B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		75A0035B2842FE2E00DCBC5B /* iosCalculaotrTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iosCalculaotrTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		75A0035F2842FE2E00DCBC5B /* iosCalculaotrTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iosCalculaotrTests.swift; sourceTree = "<group>"; };
 		75A003652842FE2E00DCBC5B /* iosCalculaotrUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iosCalculaotrUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		75A003692842FE2E00DCBC5B /* iosCalculaotrUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iosCalculaotrUITests.swift; sourceTree = "<group>"; };
-		75A0036B2842FE2E00DCBC5B /* iosCalculaotrUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iosCalculaotrUITestsLaunchTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,8 +71,6 @@
 			isa = PBXGroup;
 			children = (
 				75A0034D2842FE2D00DCBC5B /* iosCalculaotr */,
-				75A0035E2842FE2E00DCBC5B /* iosCalculaotrTests */,
-				75A003682842FE2E00DCBC5B /* iosCalculaotrUITests */,
 				75A0034C2842FE2D00DCBC5B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -111,23 +103,6 @@
 				75A003552842FE2E00DCBC5B /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		75A0035E2842FE2E00DCBC5B /* iosCalculaotrTests */ = {
-			isa = PBXGroup;
-			children = (
-				75A0035F2842FE2E00DCBC5B /* iosCalculaotrTests.swift */,
-			);
-			path = iosCalculaotrTests;
-			sourceTree = "<group>";
-		};
-		75A003682842FE2E00DCBC5B /* iosCalculaotrUITests */ = {
-			isa = PBXGroup;
-			children = (
-				75A003692842FE2E00DCBC5B /* iosCalculaotrUITests.swift */,
-				75A0036B2842FE2E00DCBC5B /* iosCalculaotrUITestsLaunchTests.swift */,
-			);
-			path = iosCalculaotrUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -270,7 +245,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				75A003602842FE2E00DCBC5B /* iosCalculaotrTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,8 +252,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				75A0036C2842FE2E00DCBC5B /* iosCalculaotrUITestsLaunchTests.swift in Sources */,
-				75A0036A2842FE2E00DCBC5B /* iosCalculaotrUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
