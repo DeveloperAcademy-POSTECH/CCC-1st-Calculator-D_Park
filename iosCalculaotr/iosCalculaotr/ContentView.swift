@@ -40,9 +40,19 @@ enum CalcButtonContent:String {
     }
 }
 
+enum Operation {
+    case add, substract, multiply, divide, none
+}
+
+
+
 struct ContentView: View {
     
     @State var value = "0"
+    @State var runningNum = 0
+    @State var currentOperation: Operation = .none
+    @State var operationArray = []
+    @State var runningNumArray = []
     
     let buttonContentRows: [[CalcButtonContent]] = [
         [.clear,.negative,.percent, .divide],
@@ -65,12 +75,17 @@ struct ContentView: View {
                         .bold()
                         .font(.system(size: 100))
                         .foregroundColor(.white)
+                        .lineLimit(1)
+                        .frame(width: UIScreen.main.bounds.width, height: 120, alignment: .trailing)
+                        .minimumScaleFactor(0.7)
+//                        .background(Color.red)
+                        .padding(.trailing, 30)
                 }
                 .padding()
                 
                 //Buttons
                 ForEach(buttonContentRows, id: \.self){ row in
-                    HStack(spacing: 12){
+                    HStack(spacing: Constants.buttonSpacing){
                         ForEach(row, id: \.self){ item in
                             Button(action: {
                                 self.onTap(button: item)
@@ -81,6 +96,7 @@ struct ContentView: View {
                                     .background(item.buttonColor)
                                     .foregroundColor(.white)
                                     .cornerRadius(self.buttonWidth(item: item)/2)
+                                    .multilineTextAlignment(.trailing)
                             })
                         }
                     }
@@ -91,7 +107,68 @@ struct ContentView: View {
     }
     
     func onTap(button: CalcButtonContent){
-       
+        
+//        let numberFormatter = NumberFormatter()
+//        numberFormatter.roundingMode = .floor         // 버림 형식
+//        numberFormatter.maximumSignificantDigits = 4  // 자르길 원하는 자릿수
+//
+//        let valueFormatted = numberFormatter.string(for: value)
+
+        switch button {
+            
+        case .add:
+            self.currentOperation = .add
+            self.runningNum = Int(self.value) ?? 0
+            self.operationArray.append(Int(self.value) ?? 0)
+//            self.runningNumArray.append(Int(self.value) ?? 0)
+            self.value = "0"
+        case .substract:
+            self.currentOperation = .substract
+            self.runningNum = Int(self.value) ?? 0
+            self.operationArray.append(Int(self.value) ?? 0)
+//            self.runningNumArray.append(Int(self.value) ?? 0)
+            self.value = "0"
+        case .multiply:
+            self.currentOperation = .multiply
+            self.runningNum = Int(self.value) ?? 0
+            self.operationArray.append(Int(self.value) ?? 0)
+//            self.runningNumArray.append(Int(self.value) ?? 0)
+            self.value = "0"
+        case .divide:
+            self.currentOperation = .divide
+            self.runningNum = Int(self.value) ?? 0
+            self.operationArray.append(Int(self.value) ?? 0)
+//            self.runningNumArray.append(Int(self.value) ?? 0)
+            self.value = "0"
+        case .equal:
+            let runningValue = self.runningNum
+            let currentValue = Int(self.value) ?? 0
+            switch self.currentOperation {
+            case .add: self.value = "\(runningValue + currentValue)"
+            case .substract: self.value = "\(runningValue - currentValue)"
+            case .multiply:
+                //곱셈과 덧셈이 있다면 곱셈 먼저 계산하도록
+                self.value = "\(runningValue * currentValue)"
+            case .divide:
+                //+-와 같이 있다면 나눗셈 먼저 계산하도록
+                self.value = "\(runningValue / currentValue)"
+            case .none:
+                break
+            }
+        case .clear:
+            self.value = "0"
+        case .decimal, .negative, .percent:
+            break
+        default:
+            let number = button.rawValue
+            if self.value == "0" {
+                value = number
+            }
+            else {
+                self.value = "\(self.value)\(number)"
+            }
+        }
+        print(operationArray)
     }
     
     func buttonWidth(item: CalcButtonContent) -> CGFloat {
